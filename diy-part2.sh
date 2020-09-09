@@ -15,6 +15,11 @@
 
 git clone https://github.com/liangchaofu/packages.git package/lcf
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/lcf
+git clone https://github.com/liangchaofu/golang.git tools
+git clone https://github.com/liangchaofu/golang.git feeds/packages/lang
 
 rm -rf openwrt/feeds/packages/net/shadowsocks-libev
 rm -rf openwrt/feeds/luci/applications/luci-app-shadowsocks-libev
+
+sed -i '$a tools-y += ucl upx' tools/Makefile
+sed -i '$a $(curdir)/upx/compile := $(curdir)/ucl/compile' tools/Makefile
